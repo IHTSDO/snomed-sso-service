@@ -1,0 +1,139 @@
+### Crowd server check.
+# Crowd API documentation:
+#     https://docs.atlassian.com/atlassian-crowd/4.4.4/REST/
+#
+# Specifically:
+#     https://docs.atlassian.com/atlassian-crowd/4.4.4/REST/#usermanagement/1/user-getUser
+#
+GET {{crowdhost}}/user?username={{username}}
+Authorization: Basic {{crowduser}} {{crowdpassword}}
+Accept: application/json
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Public non-authenticated healthcheck
+GET {{host}}/health
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Public non-authenticated healthcheck
+GET {{host}}/swagger-ui/index.html
+Content-Type: application/json
+Authorization: Basic user password
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Private authenticated healthcheck
+GET {{host}}/api/health
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 401, "Response status is not 401");
+    });
+%}
+
+### Private authenticated healthcheck
+GET {{host}}/api/health
+Content-Type: application/json
+Authorization: Basic user password
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Login, will return the cookie.
+POST {{host}}/api/authenticate
+Content-Type: application/json
+
+{
+    "login": "{{username}}",
+    "password": "{{password}}"
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    const cookieStr = response.headers.valueOf("Set-Cookie");
+    console.log(cookieStr);
+    client.global.set("auth_token", cookieStr);
+%}
+
+### Get information about user with cookie, if logged in.
+GET {{host}}/api/account
+Cookie:{{auth_token}}
+
+> {%
+    client.log(`OK`);
+    let authToken = client.global.get("auth_token");
+    client.log(`Client id: ${authToken}`);
+    client.log(`Response Status: ${response.status}`);
+
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Get information about user with cookie, if logged in.  SECOND CALL SHOULD BE FROM CACHE.
+GET {{host}}/api/account
+Cookie:{{auth_token}}
+
+> {%
+    client.log(`OK`);
+    let authToken = client.global.get("auth_token");
+    client.log(`Client id: ${authToken}`);
+    client.log(`Response Status: ${response.status}`);
+
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Check user is authenticated and get their login.
+GET {{host}}/api/authenticate
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+POST {{host}}/api/cache/clear-all
+Cookie:{{auth_token}}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Logout user with cookie.
+POST {{host}}/api/account/logout
+Content-Type: application/x-www-form-urlencoded
+Cookie:{{auth_token}}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}

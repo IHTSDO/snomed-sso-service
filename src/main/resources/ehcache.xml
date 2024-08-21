@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.ehcache.org/v3"
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <!-- Persistent cache directory -->
+    <persistence directory="/tmp/ssocache"/>
+
+    <!-- Default cache template -->
+    <cache-template name="default">
+        <expiry>
+            <tti unit="seconds">300</tti>
+        </expiry>
+
+        <listeners>
+            <listener>
+                <class>org.snomed.ssoservice.config.CustomCacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+                <events-to-fire-on>EVICTED</events-to-fire-on>
+                <events-to-fire-on>REMOVED</events-to-fire-on>
+                <events-to-fire-on>UPDATED</events-to-fire-on>
+            </listener>
+        </listeners>
+
+        <resources>
+            <heap unit="entries">1000</heap>
+            <disk persistent="true" unit="GB">2</disk>
+        </resources>
+    </cache-template>
+
+    <!-- Account cache -->
+    <cache alias="accountCache" uses-template="default">
+        <key-type>java.lang.String</key-type>
+        <value-type>org.snomed.ssoservice.rest.dto.UserDTO</value-type>
+    </cache>
+</config>
+
