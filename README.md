@@ -5,7 +5,7 @@ Main:
 
 Develop:
 [![Build Status](https://jenkins.ihtsdotools.org/view/all/job/jobs/job/snomed-sso-service/job/develop/badge/icon)](https://jenkins.ihtsdotools.org/view/all/job/jobs/job/snomed-sso-service/job/develop/)
-[![Quality Gate Status](https://sonarqube.ihtsdotools.org/api/project_badges/measure?project=org.ihtsdo.otf.common%3Aotf-common-parent&metric=alert_status&token=sqb_7dfed5b311d026dedfc39a2a494f207139d2f3bb)](https://sonarqube.ihtsdotools.org/dashboard?id=org.ihtsdo.otf.common%3Aotf-common-parent)]
+[![Quality Gate Status](https://sonarqube.ihtsdotools.org/api/project_badges/measure?project=org.snomed%3Asnomed-sso-service&metric=alert_status&token=sqb_4ab88d20b777acb2f2ae7e9d0ffed5c55111f00e)](https://sonarqube.ihtsdotools.org/dashboard?id=org.snomed%3Asnomed-sso-service)
 
 ![Contributers](https://img.shields.io/github/contributors/IHTSDO/snomed-sso-service)
 ![Last Commit](https://img.shields.io/github/last-commit/ihtsdo/snomed-sso-service)
