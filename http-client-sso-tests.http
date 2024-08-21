@@ -26,7 +26,7 @@ Content-Type: application/json
     });
 %}
 
-### Public non-authenticated healthcheck
+### Swagger exists.
 GET {{host}}/swagger-ui/index.html
 Content-Type: application/json
 Authorization: Basic user password
@@ -37,7 +37,7 @@ Authorization: Basic user password
     });
 %}
 
-### Private authenticated healthcheck
+### Private authenticated healthcheck with no creds.
 GET {{host}}/api/health
 Content-Type: application/json
 
