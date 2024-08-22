@@ -1,10 +1,10 @@
 [<img alt="Snomed CT" style="height:125px;" src="https://static.wixstatic.com/media/49d95c_f232b9c10b72410b802fbbd35b357698~mv2.png"/>](https://www.snomed.org/)
 
 Main:
-[![Build Status](https://jenkins.ihtsdotools.org/view/all/job/jobs/job/snomed-sso-service/job/master/badge/icon)](https://jenkins.ihtsdotools.org/view/all/job/jobs/job/snomed-sso-service/job/master/)
+[![Build Status](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/main/badge/icon)](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/main/)
 
 Develop:
-[![Build Status](https://jenkins.ihtsdotools.org/view/all/job/jobs/job/snomed-sso-service/job/develop/badge/icon)](https://jenkins.ihtsdotools.org/view/all/job/jobs/job/snomed-sso-service/job/develop/)
+[![Build Status](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/develop/badge/icon)](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/develop/)
 [![Quality Gate Status](https://sonarqube.ihtsdotools.org/api/project_badges/measure?project=org.snomed%3Asnomed-sso-service&metric=alert_status&token=sqb_4ab88d20b777acb2f2ae7e9d0ffed5c55111f00e)](https://sonarqube.ihtsdotools.org/dashboard?id=org.snomed%3Asnomed-sso-service)
 
 ![Contributers](https://img.shields.io/github/contributors/IHTSDO/snomed-sso-service)
@@ -15,10 +15,10 @@ Develop:
 ![Java Version](https://img.shields.io/badge/Java_Version-17-green)
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 &nbsp;&nbsp;
-![LOC](https://jenkins.ihtsdotools.org/buildStatus/icon?job=snomed-sso-service&status=lineOfCode&subject=line%20of%20code&color=blue)
-![Coverage](https://jenkins.ihtsdotools.org/buildStatus/icon?job=snomed-sso-service&subject=Coverage)
-![Tests](https://jenkins.ihtsdotools.org/buildStatus/icon?job=snomed-sso-service&status=numberOfTest&subject=Tests&color=brightgreen)
-![Tests](https://jenkins.ihtsdotools.org/buildStatus/icon?job=snomed-sso-service&subject=Coverage&status=instructionCoverage)
+![Lines of code](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/develop/badge/icon?subject=Lines%20Of%20Code&status=${lineOfCode}&color=blue)
+![Line Coverage](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/develop/badge/icon?subject=Line%20Coverage&status=${lineCoverage}&color=${colorLineCoverage})
+![Instruction Coverage](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/develop/badge/icon?subject=Instruction%20Coverage&status=${instructionCoverage}&color=${colorInstructionCoverage})
+![Branch Coverage](https://jenkins.ihtsdotools.org/job/jobs/job/snomed-sso-service/job/develop/badge/icon?subject=Branch%20Coverage&status=${branchCoverage}&color=${colorBranchCoverage})
 
 # IHTSDO Tools Identity Management Service
 
@@ -30,5 +30,3 @@ The Swagger interfaces for the deployments are here:
 
 * http://localhost:8080/health
 * http://localhost:8080/api/health - login with "user" and "password".
-
-* https://ims.ihtsdotools.org/swagger-ui.html
