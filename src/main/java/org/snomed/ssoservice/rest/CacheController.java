@@ -78,7 +78,6 @@ public class CacheController extends BaseController {
                             return;
                         }
                     } catch (RestClientException restClientException) {
-                        LOGGER.error("Error in /cache/clear-all: {}", restClientException.getMessage(), restClientException);
                         invalidateCookieAndAddToResponse(response, cookie);
                         throw new ResponseStatusException(HttpStatus.FORBIDDEN, restClientException.getMessage(), restClientException);
                     }

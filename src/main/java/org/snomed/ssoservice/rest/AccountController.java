@@ -92,6 +92,7 @@ public class AccountController extends BaseController {
         try {
             String token = crowdRestClient.authenticate(dto.getLogin(), dto.getPassword());
             Cookie cookie = new Cookie(cookieName, token);
+            cookie.setHttpOnly(true);
             cookie.setMaxAge(cookieMaxAge);
             cookie.setDomain(cookieDomain);
             cookie.setSecure(cookieSecureFlag);

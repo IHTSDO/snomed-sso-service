@@ -12,22 +12,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition
 public class SwaggerConfiguration {
-    @Value("${swagger.title:SNOMED International SSO Service}")
+    @Value("${swagger.title}")
     private String apiTitle;
 
-    @Value("${swagger.description:SNOMED International ID & SSO Service}")
+    @Value("${swagger.description}")
     private String apiDescription;
 
-    @Value("${swagger.version:2.0}")
+    @Value("${swagger.version}")
     private String apiVersion;
 
-    @Value("${swagger.license:Apache 2.0}")
+    @Value("${swagger.license}")
     private String licenseName;
 
-    @Value("${swagger.licenseUrl:https//www.apache.org/licenses/LICENSE-2.0.html}")
+    @Value("${swagger.licenseUrl}")
     private String licenseUrl;
 
-    @Value("${swagger.contact:support@ihtsdo.org}")
+    @Value("${swagger.contact}")
     private String contactEmail;
 
     @Bean

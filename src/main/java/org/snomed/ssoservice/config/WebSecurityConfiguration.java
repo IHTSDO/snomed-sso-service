@@ -26,11 +26,11 @@ public class WebSecurityConfiguration {
     public static final String SWAGGER_API_DOCS = "/v3/api-docs/**";
 
     private static final String[] SWAGGER_ANONLIST = {
-            "/api/reset_password", "/api/forgot_password", "/health"
+            "/api/reset_password", "/api/forgot_password"
     };
 
     private static final String[] SWAGGER_PERMITLIST = {
-            SWAGGER_API_DOCS, SWAGGER_UI,
+            SWAGGER_API_DOCS, SWAGGER_UI, "/health",
             "/api/authenticate", "/api/account", "/api/account/logout", "/api/cache/**"
     };
 
