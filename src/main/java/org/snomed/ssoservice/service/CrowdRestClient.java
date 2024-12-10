@@ -58,7 +58,7 @@ public class CrowdRestClient {
         }
     }
 
-    public void getUser(String username) {
+    public UserDTO getUser(String username) {
         LOGGER.info("getUser: {}", username);
         Map<String, String> params = new HashMap<>();
         params.put(USERNAME, username);
@@ -69,6 +69,7 @@ public class CrowdRestClient {
         } else {
             LOGGER.info(userDTO.getEmail());
         }
+        return userDTO;
     }
 
     public String authenticate(String username, String password) {
